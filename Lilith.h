@@ -9,6 +9,12 @@
 
 #include <stdio.h>	// snprintf
 #include <stdlib.h>	// malloc
+#include <math.h>	// cos, sin, M_PI
+
+// just in case
+#ifndef M_PI
+	#define M_PI 3.14159265358979323846f
+#endif
 
 #ifdef _WIN32
 	#define LLA_API __declspec(dllexport)
@@ -202,4 +208,39 @@ LLA_API mat3_t lla_mat3_mult(mat3_t a, mat3_t b) {
 		}
 	}
 	return result;
+}
+
+/*
+* Multiply a 3x3 matrix by a 2D vector
+*
+* Technically, this is impossible, but we can append a 1 to the vector for our use cases
+*/
+LLA_API vec2_t lla_mat3_mult_vec2(mat3_t mat, vec2_t vec) {
+	vec2_t result;
+	result.data[0] = (mat.data[0][0] * vec.data[0]) + (mat.data[0][1] * vec.data[1]) + (mat.data[0][2] * 1.0f);
+	result.data[1] = (mat.data[1][0] * vec.data[0]) + (mat.data[1][1] * vec.data[1]) + (mat.data[1][2] * 1.0f);
+	return result;
+}
+
+/*
+* Translates a 3x3 matrix by a 2D vector
+*/
+LLA_API mat3_t lla_mat3_translate(mat3_t mat, vec2_t vec) {
+	mat3_t result = lla_mat3_identity();
+	result.data[0][2] = vec.data[0];
+	result.data[1][2] = vec.data[1];
+	return lla_mat3_mult(mat, result);
+}
+
+/*
+* Rotates a 3x3 matrix by a given angle in degrees
+*/
+LLA_API mat3_t lla_mat3_rotate(mat3_t mat, float angle) {
+	float radians = angle * (M_PI / 180.0f);
+	mat3_t result = lla_mat3_identity();
+	result.data[0][0] = cosf(radians);
+	result.data[0][1] = -sinf(radians);
+	result.data[1][0] = sinf(radians);
+	result.data[1][1] = cosf(radians);
+	return lla_mat3_mult(mat, result);
 }
