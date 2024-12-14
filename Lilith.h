@@ -57,9 +57,11 @@ typedef struct vec2_t {
 */
 LLA_API mat3_t lla_mat3_zero() {
 	mat3_t zero = {
-		0.0f, 0.0f, 0.0f,
-		0.0f, 0.0f, 0.0f,
-		0.0f, 0.0f, 0.0f
+		.data = {
+			{0.0f, 0.0f, 0.0f},
+			{0.0f, 0.0f, 0.0f},
+			{0.0f, 0.0f, 0.0f}
+		}
 	};
 	return zero;
 }
@@ -69,9 +71,11 @@ LLA_API mat3_t lla_mat3_zero() {
 */
 LLA_API mat3_t lla_mat3(float a, float b, float c, float d, float e, float f, float g, float h, float i) {
 	mat3_t mat = {
-		a, b, c,
-		d, e, f,
-		g, h, i
+		.data = {
+			{a, b, c},
+			{d, e, f},
+			{g, h, i}
+		}
 	};
 	return mat;
 }
@@ -117,9 +121,11 @@ LLA_API const char * lla_vec2_string(vec2_t vec) {
 */
 LLA_API mat3_t lla_mat3_identity() {
 	mat3_t ident = {
-		1.0f, 0.0f, 0.0f,
-		0.0f, 1.0f, 0.0f,
-		0.0f, 0.0f, 1.0f
+		.data = {
+			{1.0f, 0.0f, 0.0f},
+			{0.0f, 1.0f, 0.0f},
+			{0.0f, 0.0f, 1.0f}
+		}
 	};
 	return ident;
 }
