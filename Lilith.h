@@ -30,6 +30,10 @@
 * Types
 */
 
+/*
+* 3x3 Matrix
+* [row][column]
+*/
 typedef struct mat3_t {
     float data[3][3];
 } mat3_t;

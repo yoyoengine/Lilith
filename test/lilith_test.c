@@ -109,5 +109,15 @@ int main() {
     printf("res (rotation_matrix * mat3): \n%s\n", result_3_str);
     free((void*)result_3_str);
 
+    // zoogies test
+    mat3_t a = lla_mat3(10.0f, 80.0f, 4.0f, 5.0f, 78.0f, 9.0f, 47.0f, 9.0f, 5.0f);
+    mat3_t b = lla_mat3(4.0f, 35.0f, 0.0f, 42.0f, 1.0f, 23.0f, 44.0f, 55.0f, 6.0f);
+
+    mat3_t res = lla_mat3_mult(a, b);
+
+    const char* res_str = lla_mat3_string(res);
+    printf("res (a * b): \n%s\n", res_str);
+    free((void*)res_str);
+
     return 0;
 }
