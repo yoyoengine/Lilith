@@ -88,6 +88,20 @@ float lla_vec2_dot(vec2_t a, vec2_t b) {
 	return (a.data[0] * b.data[0]) + (a.data[1] * b.data[1]);
 }
 
+vec2_t lla_vec2_sub(vec2_t a, vec2_t b) {
+	vec2_t result;
+	result.data[0] = a.data[0] - b.data[0];
+	result.data[1] = a.data[1] - b.data[1];
+	return result;
+}
+
+vec2_t lla_vec2_add(vec2_t a, vec2_t b) {
+	vec2_t result;
+	result.data[0] = a.data[0] + b.data[0];
+	result.data[1] = a.data[1] + b.data[1];
+	return result;
+}
+
 vec2_t lla_vec2_scale(vec2_t vec, float scalar) {
 	vec2_t result;
 	result.data[0] = vec.data[0] * scalar;
@@ -147,4 +161,8 @@ mat3_t lla_mat3_rotate(mat3_t mat, float angle) {
 	result.data[1][0] = sinf(radians);
 	result.data[1][1] = cosf(radians);
 	return lla_mat3_mult(mat, result);
+}
+
+float lla_vec2_cross(vec2_t a, vec2_t b) {
+	return (a.data[0] * b.data[1]) - (a.data[1] * b.data[0]);
 }

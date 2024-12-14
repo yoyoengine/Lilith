@@ -99,6 +99,16 @@ LLA_API mat3_t lla_mat3_sub(mat3_t a, mat3_t b);
 LLA_API float lla_vec2_dot(vec2_t a, vec2_t b);
 
 /*
+* Subtracts two 2D vectors
+*/
+LLA_API vec2_t lla_vec2_sub(vec2_t a, vec2_t b);
+
+/*
+* Adds two 2D vectors
+*/
+LLA_API vec2_t lla_vec2_add(vec2_t a, vec2_t b);
+
+/*
 * Scales a 2D vector by a given scalar
 */
 LLA_API vec2_t lla_vec2_scale(vec2_t vec, float scalar);
@@ -134,5 +144,10 @@ LLA_API mat3_t lla_mat3_translate(mat3_t mat, vec2_t vec);
 * Rotates a 3x3 matrix by a given angle in degrees
 */
 LLA_API mat3_t lla_mat3_rotate(mat3_t mat, float angle);
+
+/*
+* Cross product of two 2D vectors
+*/
+LLA_API float lla_vec2_cross(vec2_t a, vec2_t b);
 
 #endif // LILITH_H
