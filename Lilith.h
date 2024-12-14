@@ -5,21 +5,17 @@
     Licensed under the MIT license. See LICENSE file in the project root for details.
 */
 
-#pragma once
+#ifndef LILITH_H
+#define LILITH_H
 
 #include <stdio.h>	// snprintf
 #include <stdlib.h>	// malloc
 #include <math.h>	// cos, sin, M_PI
 
-// just in case
-#ifndef M_PI
-	#define M_PI 3.14159265358979323846f
-#endif
-
 #ifdef _WIN32
-	#define LLA_API __declspec(dllexport)
+	#define LLA_API __declspec(dllexport) inline
 #else
-	#define LLA_API
+	#define LLA_API inline
 #endif
 
 /*
@@ -244,3 +240,5 @@ LLA_API mat3_t lla_mat3_rotate(mat3_t mat, float angle) {
 	result.data[1][1] = cosf(radians);
 	return lla_mat3_mult(mat, result);
 }
+
+#endif // LILITH_H
