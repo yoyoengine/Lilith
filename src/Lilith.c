@@ -166,3 +166,26 @@ mat3_t lla_mat3_rotate(mat3_t mat, float angle) {
 float lla_vec2_cross(vec2_t a, vec2_t b) {
 	return (a.data[0] * b.data[1]) - (a.data[1] * b.data[0]);
 }
+
+mat3_t lla_mat3_inverse(mat3_t mat) {
+	float det = (mat.data[0][0] * ((mat.data[1][1] * mat.data[2][2]) - (mat.data[1][2] * mat.data[2][1]))) -
+				(mat.data[0][1] * ((mat.data[1][0] * mat.data[2][2]) - (mat.data[1][2] * mat.data[2][0]))) +
+				(mat.data[0][2] * ((mat.data[1][0] * mat.data[2][1]) - (mat.data[1][1] * mat.data[2][0])));
+
+	if (det == 0.0f) {
+		return lla_mat3_zero();
+	}
+
+	mat3_t result;
+	result.data[0][0] = ((mat.data[1][1] * mat.data[2][2]) - (mat.data[1][2] * mat.data[2][1])) / det;
+	result.data[0][1] = ((mat.data[0][2] * mat.data[2][1]) - (mat.data[0][1] * mat.data[2][2])) / det;
+	result.data[0][2] = ((mat.data[0][1] * mat.data[1][2]) - (mat.data[0][2] * mat.data[1][1])) / det;
+	result.data[1][0] = ((mat.data[1][2] * mat.data[2][0]) - (mat.data[1][0] * mat.data[2][2])) / det;
+	result.data[1][1] = ((mat.data[0][0] * mat.data[2][2]) - (mat.data[0][2] * mat.data[2][0])) / det;
+	result.data[1][2] = ((mat.data[0][2] * mat.data[1][0]) - (mat.data[0][0] * mat.data[1][2])) / det;
+	result.data[2][0] = ((mat.data[1][0] * mat.data[2][1]) - (mat.data[1][1] * mat.data[2][0])) / det;
+	result.data[2][1] = ((mat.data[0][1] * mat.data[2][0]) - (mat.data[0][0] * mat.data[2][1])) / det;
+	result.data[2][2] = ((mat.data[0][0] * mat.data[1][1]) - (mat.data[0][1] * mat.data[1][0])) / det;
+
+	return result;
+}

@@ -160,4 +160,9 @@ LLA_API mat3_t lla_mat3_rotate(mat3_t mat, float angle);
 */
 LLA_API float lla_vec2_cross(vec2_t a, vec2_t b);
 
+/*
+* Returns the inverse of a 3x3 matrix
+*/
+LLA_API mat3_t lla_mat3_inverse(mat3_t mat);
+
 #endif // LILITH_H
