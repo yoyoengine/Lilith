@@ -165,4 +165,9 @@ LLA_API float lla_vec2_cross(vec2_t a, vec2_t b);
 */
 LLA_API mat3_t lla_mat3_inverse(mat3_t mat);
 
+/*
+* Rotates a 3x3 matrix around a point by a given angle in degrees
+*/
+LLA_API mat3_t lla_mat3_rotate_around(mat3_t mat, vec2_t point, float angle);
+
 #endif // LILITH_H

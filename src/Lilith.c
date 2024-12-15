@@ -163,6 +163,12 @@ mat3_t lla_mat3_rotate(mat3_t mat, float angle) {
 	return lla_mat3_mult(mat, result);
 }
 
+mat3_t lla_mat3_rotate_around(mat3_t mat, vec2_t point, float angle) {
+	mat3_t result = lla_mat3_translate(mat, point);
+	result = lla_mat3_rotate(result, angle);
+	return lla_mat3_translate(result, lla_vec2_scale(point, -1.0f));
+}
+
 float lla_vec2_cross(vec2_t a, vec2_t b) {
 	return (a.data[0] * b.data[1]) - (a.data[1] * b.data[0]);
 }
