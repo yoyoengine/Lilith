@@ -10,7 +10,17 @@
 
 #include <stdio.h>	// snprintf
 #include <stdlib.h>	// malloc
-#include <math.h>	// cos, sin, M_PI
+
+#define _USE_MATH_DEFINES   // msvc edge case
+#include <math.h>	        // cos, sin, M_PI
+
+/*
+    Edge case fallback because I dont feel
+    like debugging CI builds anymore!
+*/
+#ifndef M_PI
+    #define M_PI 3.14159265358979323846
+#endif
 
 #ifdef _WIN32
 	#define LLA_API __declspec(dllexport)
