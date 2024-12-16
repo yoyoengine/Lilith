@@ -195,3 +195,10 @@ mat3_t lla_mat3_inverse(mat3_t mat) {
 
 	return result;
 }
+
+mat3_t lla_mat3_scale_vec2(mat3_t mat, vec2_t vec) {
+	mat3_t result = mat;
+	result.data[0][0] *= vec.data[0];
+	result.data[1][1] *= vec.data[1];
+	return result;
+}

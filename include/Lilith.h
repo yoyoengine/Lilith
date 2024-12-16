@@ -170,4 +170,9 @@ LLA_API mat3_t lla_mat3_inverse(mat3_t mat);
 */
 LLA_API mat3_t lla_mat3_rotate_around(mat3_t mat, vec2_t point, float angle);
 
+/*
+* Scales a 3x3 matrix by a 2D vector (x,y)
+*/
+LLA_API mat3_t lla_mat3_scale_vec2(mat3_t mat, vec2_t vec);
+
 #endif // LILITH_H
