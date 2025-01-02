@@ -202,3 +202,7 @@ mat3_t lla_mat3_scale_vec2(mat3_t mat, vec2_t vec) {
 	result.data[1][1] *= vec.data[1];
 	return result;
 }
+
+float lla_vec2_magnitude(vec2_t vec) {
+	return sqrtf((vec.data[0] * vec.data[0]) + (vec.data[1] * vec.data[1]));
+}
