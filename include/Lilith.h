@@ -1,6 +1,6 @@
 /*
     This file is a part of Lilith. (https://github.com/yoyoengine/Lilith)
-    Copyright (C) 2024  Ryan Zmuda
+    Copyright (C) 2024-2025  Ryan Zmuda
 
     Licensed under the MIT license. See LICENSE file in the project root for details.
 */
@@ -189,5 +189,7 @@ LLA_API mat3_t lla_mat3_rotate_around(mat3_t mat, vec2_t point, float angle);
 * Scales a 3x3 matrix by a 2D vector (x,y)
 */
 LLA_API mat3_t lla_mat3_scale_vec2(mat3_t mat, vec2_t vec);
+
+LLA_API vec2_t lla_vec2_normalize(vec2_t vec);
 
 #endif // LILITH_H

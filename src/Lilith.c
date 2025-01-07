@@ -1,6 +1,6 @@
 /*
     This file is a part of Lilith. (https://github.com/yoyoengine/Lilith)
-    Copyright (C) 2024  Ryan Zmuda
+    Copyright (C) 2024-2025  Ryan Zmuda
 
     Licensed under the MIT license. See LICENSE file in the project root for details.
 */
@@ -205,4 +205,14 @@ mat3_t lla_mat3_scale_vec2(mat3_t mat, vec2_t vec) {
 
 float lla_vec2_magnitude(vec2_t vec) {
 	return sqrtf((vec.data[0] * vec.data[0]) + (vec.data[1] * vec.data[1]));
+}
+
+vec2_t lla_vec2_normalize(vec2_t vec) {
+	float mag = lla_vec2_magnitude(vec);
+	vec2_t result = vec;
+	if (mag > 0.0f) {
+        result.data[0] /= mag;
+        result.data[1] /= mag;
+    }
+	return result;
 }
