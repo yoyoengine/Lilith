@@ -75,7 +75,7 @@ typedef union vec2_t {
 /*
 * Creates a 0'd out 3x3 matrix
 */
-LLA_API mat3_t lla_mat3_zero();
+LLA_API mat3_t lla_mat3_zero(void);
 
 /*
 * Creates a 3x3 matrix with the given values
@@ -101,7 +101,7 @@ LLA_API const char * lla_vec2_string(vec2_t vec);
 /*
 * Returns a 3x3 identity matrix
 */
-LLA_API mat3_t lla_mat3_identity();
+LLA_API mat3_t lla_mat3_identity(void);
 
 /*
 * Add two 3x3 matrices
