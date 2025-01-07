@@ -46,15 +46,25 @@
 * 3x3 Matrix
 * [row][column]
 */
-typedef struct mat3_t {
+typedef union mat3_t {
+    struct {
+        float m00; float m01; float m02;
+        float m10; float m11; float m12;
+        float m20; float m21; float m22;
+    };
     float data[3][3];
+    float flat[9];
 } mat3_t;
 
 /*
 * Generic Vector, will be treated
 * as row or column implicitly.
 */
-typedef struct vec2_t {
+typedef union vec2_t {
+    struct {
+        float x;
+        float y;
+    };
     float data[2];
 } vec2_t;
 
